@@ -1,4 +1,4 @@
-import { IsDate, IsNotEmpty, IsString, Matches } from 'class-validator';
+import { IsNotEmpty, IsString, Matches } from 'class-validator';
 
 export class CreateReservationDto {
   @IsNotEmpty({ message: 'Start date must be filled!' })
