@@ -6,7 +6,7 @@ export class UsersDocument extends AbstractDocument {
   @Prop()
   email: string;
 
-  @Prop()
+  @Prop({ select: false })
   password: string;
 }
 
