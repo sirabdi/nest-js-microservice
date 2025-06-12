@@ -14,4 +14,8 @@ export class UsersRepository extends AbstractRepository<UsersDocument> {
   ) {
     super(reservationModel);
   }
+
+  async findOneWithPassword(filterQuery: any): Promise<UsersDocument | null> {
+    return this.model.findOne(filterQuery).select('+password').lean();
+  }
 }
