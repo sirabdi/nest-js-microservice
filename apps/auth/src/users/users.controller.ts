@@ -13,6 +13,8 @@ import { CreateUsersDto } from './dto/create-users.dto';
 import { UpdateUsersDto } from './dto/update-users.dto';
 import { UsersDocument } from './model/users.schema';
 import { UsersService } from './users.service';
+import { CurrentUser } from '../current-user.decorator';
+import { JwtAuthGuard } from '../guards/jwt-auth-guards';
 
 @Controller('users')
 export class UsersController {
@@ -21,6 +23,12 @@ export class UsersController {
   @Post()
   async create(@Body() createUsersDto: CreateUsersDto): Promise<UsersDocument> {
     return this.usersService.create(createUsersDto);
+  }
+
+  @Get('profile')
+  @UseGuards(JwtAuthGuard)
+  async getUser(@CurrentUser() user: UsersDocument) {
+    return user;
   }
 
   @Get()
