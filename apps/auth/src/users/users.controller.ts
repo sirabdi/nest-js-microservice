@@ -13,7 +13,7 @@ import { CreateUsersDto } from './dto/create-users.dto';
 import { UpdateUsersDto } from './dto/update-users.dto';
 import { UsersDocument } from './model/users.schema';
 import { UsersService } from './users.service';
-import { CurrentUser } from '../current-user.decorator';
+import { CurrentUser } from '../../../../libs/common/src/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../guards/jwt-auth-guards';
 
 @Controller('users')
