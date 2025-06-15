@@ -1,4 +1,13 @@
-import { IsNotEmpty, IsString, Matches } from 'class-validator';
+import { CreateChargeDto } from '@app/common';
+import { Type } from 'class-transformer';
+import {
+  IsDefined,
+  IsNotEmpty,
+  IsNotEmptyObject,
+  IsString,
+  Matches,
+  ValidateNested,
+} from 'class-validator';
 
 export class CreateReservationDto {
   @IsNotEmpty({ message: 'Start date must be filled!' })
@@ -17,7 +26,9 @@ export class CreateReservationDto {
   @IsNotEmpty({ message: 'Place must be filled!' })
   placeId: string;
 
-  @IsString({ message: 'Invoice must be a String instance!' })
-  @IsNotEmpty({ message: 'Invoice must be filled!' })
-  invoiceId: string;
+  @IsDefined()
+  @IsNotEmptyObject()
+  @ValidateNested()
+  @Type(() => CreateChargeDto)
+  charge: CreateChargeDto;
 }
