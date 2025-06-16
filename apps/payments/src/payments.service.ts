@@ -43,7 +43,10 @@ export class PaymentsService {
         },
       });
 
-      this.notificationsService.emit('notify_email', { email });
+      this.notificationsService.emit('notify_email', {
+        email,
+        text: `Your payment of $${amount * 100} has completely succesfully`,
+      });
 
       return paymentIntent;
     } catch (error) {
