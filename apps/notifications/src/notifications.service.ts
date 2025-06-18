@@ -20,6 +20,7 @@ export class NotificationsService {
   }
 
   async notifyEmail({ email, text }: NotifyEmailDto) {
+    console.log('email ', email)
     await this.transporter.sendMail({
       from: this.configService.get('SMTP_USER'),
       to: email,
