@@ -8,12 +8,16 @@ WORKDIR /usr/src/app
 
 # Copy dependency definitions
 COPY package*.json ./
+COPY nest-cli.json nes-cli.json
 
 # Install all dependencies (including devDeps)
 RUN npm install
 
 # Copy source code
 COPY . .
+
+# Install all dependencies (including devDeps)
+RUN npm install -r
 
 # Build the app
 RUN npm run build

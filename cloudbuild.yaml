@@ -1,0 +1,58 @@
+steps:
+  # Reservations
+  - name: 'grc.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'us-east4-docker.pkg.dev/sleepr-463108/reservations/production',
+        '-f',
+        'apps/reservations/Dockerfile',
+        '.',
+      ]
+  - name: 'grc.io/cloud-builders/docker'
+    args:
+      ['push', 'us-east4-docker.pkg.dev/sleepr-463108/reservations/production']
+
+  # Auth
+  - name: 'grc.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'us-east4-docker.pkg.dev/sleepr-463108/auth/production',
+        '-f',
+        'apps/auth/Dockerfile',
+        '.',
+      ]
+  - name: 'grc.io/cloud-builders/docker'
+    args: ['push', 'us-east4-docker.pkg.dev/sleepr-463108/auth/production']
+
+  # Payments
+  - name: 'grc.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'us-east4-docker.pkg.dev/sleepr-463108/payments/production',
+        '-f',
+        'apps/payments/Dockerfile',
+        '.',
+      ]
+  - name: 'grc.io/cloud-builders/docker'
+    args: ['push', 'us-east4-docker.pkg.dev/sleepr-463108/payments/production']
+
+  # Notifications
+  - name: 'grc.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'us-east4-docker.pkg.dev/sleepr-463108/notifications/production',
+        '-f',
+        'apps/notifications/Dockerfile',
+        '.',
+      ]
+  - name: 'grc.io/cloud-builders/docker'
+    args:
+      ['push', 'us-east4-docker.pkg.dev/sleepr-463108/notifications/production']
