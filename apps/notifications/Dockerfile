@@ -36,7 +36,7 @@ COPY package*.json ./
 RUN npm install --omit=dev
 
 # Copy built files from builder
-COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=development /usr/src/app/dist ./dist
 
 # Run the application
 CMD ["node", "dist/apps/notifications/main"]

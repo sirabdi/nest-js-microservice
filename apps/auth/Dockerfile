@@ -35,8 +35,8 @@ COPY package*.json ./
 # Install only production dependencies
 RUN npm install --omit=dev
 
-# Copy built files from builder
-COPY --from=builder /usr/src/app/dist ./dist
+# Copy built files from development stage
+COPY --from=development /usr/src/app/dist ./dist
 
 # Run the application
 CMD ["node", "dist/apps/auth/main"]
